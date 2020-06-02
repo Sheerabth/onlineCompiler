@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://qwerty:qwerty123456@onlinecompiler-blbkn.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "oc_myJwtSecret"
+}
