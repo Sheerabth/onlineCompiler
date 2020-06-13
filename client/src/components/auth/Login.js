@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { login } from '../../actions/authActions'
 import { clearErrors } from '../../actions/errorActions'
-import { Alert } from 'reactstrap'
+import { Alert } from 'react-bootstrap'
 import { Button, Form } from 'react-bootstrap' 
 
 class Login extends Component {
@@ -55,9 +55,10 @@ class Login extends Component {
 
     render() {
         return (
-            <Form onSubmit={this.onSubmit}>
+            <Form onSubmit={this.onSubmit} className="login container">
+                <h5>Login</h5>
                 {this.state.msg ? (
-                    <Alert variant="warning">
+                    <Alert variant="dark">
                         { this.state.msg + '!!!'}
                     </Alert>
                 ) : null}
@@ -68,6 +69,7 @@ class Login extends Component {
                         name="email"
                         placeholder="something@example.com"
                         onChange={this.onChange}
+                        className="inp"
                     />
                 </Form.Group>
                 <Form.Group controlId='Password'>
@@ -77,6 +79,7 @@ class Login extends Component {
                         name="password"
                         placeholder='your password'
                         onChange={this.onChange}
+                        className="inp"
                     />
                 </Form.Group>
                 <Button variant='outline-success' type="submit">Login</Button>

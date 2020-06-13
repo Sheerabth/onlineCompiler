@@ -68,7 +68,7 @@ class Editor extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <div className="left">
           <h5>Options</h5>
           <Options

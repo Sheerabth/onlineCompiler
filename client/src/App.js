@@ -12,17 +12,51 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 export default class App extends Component {
 
+  state = {
+    darkMode: this.getInitialMode()
+  }
+
+  getInitialMode() {
+    const isReturningUser = "dark" in localStorage;
+    const savedMode = JSON.parse(localStorage.getItem('dark'));
+    const userPrefersDark = this.getColorScheme();
+    if (isReturningUser) {
+      return savedMode;
+    } else if (userPrefersDark) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  getColorScheme() {
+    if (!window.matchMedia) return;
+
+    return window.matchMedia("(prefers-color-scheme: dark").matches
+  }
+
   componentDidMount() {
     store.dispatch(loadUser());
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('dark', JSON.stringify(this.state.darkMode))
+  }
+
+  toggleMode = () => {
+    this.setState({
+      darkMode: !this.state.darkMode
+    })
   }
 
   render(){
     return (
       <Provider store={store}>
         <Router>
-        <div className="container">
+        <div className={this.state.darkMode ? "dark-mode outer" : "outer" }>
           <div className = "content">
-            <AppNavbar />   
+            <AppNavbar darkMode={this.state.darkMode} toggleMode={this.toggleMode}/>   
             <Switch>
               <Route exact path = "/" component = {Editor} />     
               <Route path = "/files" component = {Files} />

@@ -1,8 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=B612&display=swap');
-.body{
-    background-color: rgb(240,240,240);
-    /* color: grey; */
-}
 
 .left {
     float: left
@@ -35,3 +31,90 @@ textarea{
     resize: none;
 }
 
+.register {
+    width: 500px;
+    background-color: lightgray;
+    margin-top: 10%;
+    padding: 70px 70px 90px 70px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.login {
+    width: 500px;
+    background-color: lightgray;
+    margin-top: 10%;
+    padding: 70px 70px 90px 70px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.files {
+    width: 500px;
+}
+
+.dark-mode .files{
+    background-color: #272822;
+    color: #999;
+}
+
+.nav{
+    background-color: lightgray;
+}
+
+/* .light-mode .nav{
+    background-color: #999;
+} */
+
+.dark-mode .register {
+    background-color: #444;
+    color: #bbb;
+}
+
+.dark-mode .login {
+    background-color: #444;
+    color: #bbb;
+}
+.dark-mode .nav {
+    background-color: #272822;
+}
+
+.dark-mode .nav-text{
+    color: #999;
+}
+
+.dark-mode .inp{
+    background-color: #272822;
+    color: #999;
+}
+
+.dark-mode {
+    background-color: #1a1919;
+    color: #999;
+}
+
+.outer{
+    padding-left: 10%;
+    padding-right: 10%;
+    min-height: 800px;
+    max-height: 2000px;
+}
+
+.dark-mode Button.toggle-btn{
+    color: #bbb;
+}
+
+.dark-mode Button.toggle-btn:hover{
+    color: #272822;
+    background-color: #eee;
+}
+
+.dark-mode Button.down-btn{
+    color: #bbb;
+    background-color: #383838;
+}
+
+.dark-mode Button.down-btn:hover{
+    color: #383838;
+    background-color: #bbb;
+}

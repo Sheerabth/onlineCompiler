@@ -52,13 +52,13 @@ class Files extends Component {
             files.map(file => {
                 i = i + 1;
                 return (
-                <Card key={ file.id }>
+                <Card key={ file.id } className="files">
                     <Accordion.Toggle as={Card.Header} eventKey={i}>{ file.name }</Accordion.Toggle>
                         <Accordion.Collapse eventKey={i}>
                             <Card.Body>
                                 <Button variant='outline-success' onClick={() => this.onClick(file)}>Open</Button>{' '}
                                 <Button variant='outline-danger' onClick={() => this.onDelete(file.id)}>Delete</Button>{' '}
-                                <Button variant='outline-dark' onClick={() => this.downloadFile(file.id)}>Downlad</Button>{' '}
+                                <Button variant='outline-dark' onClick={() => this.downloadFile(file.id)} className='down-btn'>Downlad</Button>{' '}
                             </Card.Body>
                         </Accordion.Collapse>
                 </Card>
@@ -69,9 +69,12 @@ class Files extends Component {
         ))
         
         return (
-            <Accordion>
-                {fileList}
-            </Accordion>
+            <div>
+                <h5>Files</h5>
+                <Accordion>
+                    {fileList}
+                </Accordion>
+            </div>
         )
     }
 }

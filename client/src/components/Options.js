@@ -113,7 +113,7 @@ const { theme, fontSize } = this.props.changes;
     return (
     <Form>
         {this.state.msg ? (
-            <Alert variant='warning'>
+            <Alert variant='dark'>
                 { this.state.msg + '!!!'}
             </Alert>
         ) : null}
@@ -124,6 +124,7 @@ const { theme, fontSize } = this.props.changes;
                 name="mode"
                 onChange={this.onModeChange}
                 value={this.props.file.mode}
+                className="inp"
             >
                 {languages.map(lang => (
                 <option>
@@ -139,6 +140,7 @@ const { theme, fontSize } = this.props.changes;
                 name="theme"
                 onChange={this.props.setTheme}
                 value={theme}
+                className="inp"
             >
                 {themes.map(theme => (
                 <option>
@@ -154,6 +156,7 @@ const { theme, fontSize } = this.props.changes;
                 name="fontSize"
                 onChange={this.props.setFontSize}
                 value={fontSize}
+                className="inp"
             >
                 {[14, 16, 18, 20, 24, 28, 32, 40].map(size => (
                 <option>
@@ -168,7 +171,7 @@ const { theme, fontSize } = this.props.changes;
             <Button variant='outline-success' onClick={this.toggle}>
                 Save
             </Button>{' '}
-            <Button variant='outline-dark' onClick={this.downloadFile}>
+            <Button variant='outline-dark' onClick={this.downloadFile} className='down-btn'>
                 Download
             </Button>{' '}
         <Modal show={this.state.open} onHide={this.toggle}>
@@ -179,7 +182,7 @@ const { theme, fontSize } = this.props.changes;
             <Form.Group controlId="FileName">
                 <Form.Label>File Name</Form.Label>
                 <Form.Control
-                type="text"
+                    type="text"
                     name="fileName"
                     onChange={this.onNameChange}
                     value={this.props.file.name}
