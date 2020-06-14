@@ -170,10 +170,13 @@ const { theme, fontSize } = this.props.changes;
             </Button>{' '}
             <Button variant='outline-success' onClick={this.toggle}>
                 Save
-            </Button>{' '}
+            </Button><br/><br/>
             <Button variant='outline-dark' onClick={this.downloadFile} className='down-btn'>
                 Download
             </Button>{' '}
+            <Button variant='outline-dark' onClick={this.props.onClear} className='down-btn'>
+                Reset
+            </Button><br/>
         <Modal show={this.state.open} onHide={this.toggle}>
             <Modal.Header closeButton>
                 <Modal.Title>Name of the File</Modal.Title>

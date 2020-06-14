@@ -5,6 +5,7 @@ import Options from './Options';
 import CodeIO from './CodeIO';
 import { connect } from 'react-redux'; 
 import { changeValue } from '../actions/fileActions';
+import scrollToComponent from 'react-scroll-to-component'
 
 class Editor extends Component {
   
@@ -17,10 +18,15 @@ class Editor extends Component {
     fontSize: 14,
     input: '',
     output: '',
+    isLoading: false
   };
 
   onValueChange = (value) => {
     this.props.changeValue(value);
+  }
+
+  onClear = () => {
+    this.props.changeValue('');
   }
 
   setTheme = (e) => {
@@ -48,6 +54,10 @@ class Editor extends Component {
   }
 
   run = () => {
+    this.setState({
+          isLoading: true
+        })
+    scrollToComponent(this.IO, {duration: 1000, ease: 'outQuad'} )
     axios
       .post('http://127.0.0.1:9000/api/run',
         {
@@ -56,6 +66,9 @@ class Editor extends Component {
           input: this.state.input
         })
       .then(response => {
+        this.setState({
+          isLoading: false
+        })
         console.log('Output: ' + response.data);
         this.setState({
           output: response.data
@@ -76,12 +89,13 @@ class Editor extends Component {
             setFontSize={this.setFontSize}
             setTheme={this.setTheme}
             run={this.run}
+            onClear={this.onClear}
           />
         </div>
         <div className="right">
           <h5>Editor</h5>
           <AceEditor
-            width="650px"
+            width="600px"
             placeholder="Your Code Goes Here !!!"
             mode={this.props.file.mode}
             value={this.props.file.value}
@@ -103,8 +117,9 @@ class Editor extends Component {
             }}
           />
         </div>
-        <div className="IO">
+        <div className="IO" ref={(div) => { this.IO = div; }}>
           <CodeIO
+            isLoading={this.state.isLoading}
             input={this.state.input}
             setInput={this.setInput}
             output={this.state.output}
