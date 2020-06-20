@@ -111,7 +111,7 @@ class Editor extends Component {
               useWorker: false,
               enableBasicAutocompletion: true,
               enableLiveAutocompletion: true,
-              enableSnippets: true,
+              enableSnippets: false,
               showLineNumbers: true,
               tabSize: 4
             }}
